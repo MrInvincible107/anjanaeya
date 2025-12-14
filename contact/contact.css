@@ -1,0 +1,332 @@
+/* =========================================================
+   CONTACT PAGE (FULL REPLACEMENT)
+   - Background image
+   - Glassmorphism cards (blur background)
+   - All text white
+   - Curvier font (Poppins)
+   ========================================================= */
+
+/* Reset */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+/* Theme variables */
+:root{
+  --text: #ffffff;
+  --muted: rgba(255,255,255,.80);
+
+  --nav-bg: rgba(20,20,20,.55);
+  --nav-border: rgba(255,255,255,.10);
+
+  --glass-bg: rgba(20,20,20,.38);
+  --glass-border: rgba(255,255,255,.22);
+
+  --field-bg: rgba(0,0,0,.22);
+  --field-border: rgba(255,255,255,.22);
+
+  --btn-border: rgba(255,255,255,.35);
+}
+
+/* Page background image + overlay */
+body{
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+
+  /* Put bg.jpg inside /contact/ folder */
+  background: url("../shared/contact.png") center / cover no-repeat fixed;
+  position: relative;
+}
+
+/* Dark overlay to keep content readable */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: -1;
+}
+
+/* Global text color to force white everywhere */
+h1, h2, h3, h4, h5, h6,
+p, span, label, a, small, li, strong{
+  color: var(--text);
+}
+
+a{
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Container */
+.container{
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+   /* =========================
+      NAVBAR (CONSISTENT & FIXED)
+      ========================= */
+
+   .navbar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+
+     height: 64px;                 /* FIXED HEIGHT */
+     background-color: #2f2f2f;
+
+     display: flex;
+     align-items: center;          /* vertical centering */
+     justify-content: center;
+
+     z-index: 9999;
+   }
+
+   /* Center links */
+   .navbar ul {
+     list-style: none;
+     display: flex;
+     align-items: center;
+     gap: 3rem;
+     margin: 0;
+     padding: 0;
+   }
+
+   /* Link typography */
+   .navbar a {
+     font-family: "Segoe UI", sans-serif; /* FORCE SAME FONT */
+     font-size: 1.05rem;                  /* slightly reduced */
+     font-weight: 500;
+     line-height: 1;                      /* PREVENT HEIGHT INFLATION */
+
+     color: #eee;
+     text-decoration: none;
+     padding: 0.25rem 0;                  /* vertical tightness */
+
+     transition: color 0.3s ease;
+   }
+
+   .navbar a:hover {
+     color: #d4af37;
+   }
+
+   /* Active underline (same everywhere) */
+   .navbar a.active {
+     text-decoration: underline;
+     text-underline-offset: 8px;
+     text-decoration-thickness: 2px;
+   }
+
+   /* Ensure content starts below navbar */
+   body {
+     padding-top: 64px;
+   }
+
+/* =========================================================
+   HERO
+   (If your HTML uses .hero hero--contact, this works)
+   ========================================================= */
+.hero{
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 46px 0;
+}
+
+.hero-content{
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.hero-title{
+  margin: 0;
+  font-size: clamp(42px, 5vw, 66px);
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.hero-subtitle{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Button like your Packages hero */
+.btn, .btn-primary{
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 260px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--btn-border);
+  background: rgba(255,255,255,.10);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .12s ease, background .2s ease;
+}
+
+.btn:hover, .btn-primary:hover{
+  background: rgba(255,255,255,.16);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   MAIN LAYOUT (matches your latest contact layout)
+   Uses .contact-wrap (from your HTML)
+   ========================================================= */
+.contact-wrap{
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 22px;
+  padding: 28px 0 46px;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .contact-wrap{ grid-template-columns: 1fr; }
+  .grid-2{ grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   GLASS CARDS (blur background behind)
+   Your HTML uses .contact-card and .info-card
+   ========================================================= */
+.contact-card,
+.info-card{
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 18px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* Titles */
+.section-title{
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.section-subtitle{
+  margin: 0 0 16px;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+.contact-form .field{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.contact-form label{
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+/* Two columns for name/phone */
+.grid-2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Inputs */
+.contact-form input,
+.contact-form textarea{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--field-border);
+  background: var(--field-bg);
+  color: #fff;
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+  color: rgba(255,255,255,.65);
+}
+
+.contact-form textarea{
+  min-height: 160px;
+  resize: vertical;
+}
+
+/* Submit button full width */
+.btn-primary{
+  max-width: none;
+  width: 100%;
+}
+
+/* =========================================================
+   INFO SIDE
+   ========================================================= */
+.info-list{
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.info-item h3{
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.info-item p{
+  margin: 0;
+  opacity: 0.92;
+}
+
+/* =========================================================
+   MAP
+   ========================================================= */
+.map-card{
+  margin-top: 18px;
+}
+
+.map-embed{
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.18);
+  margin-top: 10px;
+}
+
+.map-embed iframe{
+  width: 100%;
+  height: 260px;
+  border: 0;
+}
+
+/* =========================================================
+   FOOTER (optional if you have it)
+   ========================================================= */
+.site-footer{
+  padding: 22px 0 30px;
+  opacity: 0.92;
+}
+
+.footer-inner{
+  display: flex;
+  justify-content: center;
+}

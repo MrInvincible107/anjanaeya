@@ -1,0 +1,173 @@
+/* ===== NAVBAR (shared across all pages) ===== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif; line-height: 1.6;
+}
+
+/* ===== NAVBAR (EXACT) ===== */
+.navbar {
+  background-color: #2f2f2f;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  border: none;
+ box-shadow: none;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: #eee;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #d4af37;
+}
+
+.navbar a.active {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 2px;
+}
+
+/* HERO */
+/* Make Packages hero behave like Suites hero (centered) */
+.hero--packages{
+  position: relative;
+  min-height: calc(100vh - 64px); /* adjust 64px if your navbar height differs */
+  display: grid;
+  place-items: center;
+  background: url("../shared/packages.png") center / cover no-repeat;
+  overflow: hidden;
+}
+
+.hero--packages .hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.hero--packages .hero-content{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+}
+
+.hero--packages .hero-title{
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+}
+
+.hero--packages .hero-subtitle{
+  margin: 0 0 1.5rem;
+  opacity: 0.9;
+}
+
+.hero--packages .hero-btn{
+  display: inline-block;
+  padding: 0.9rem 1.6rem;
+  border: 2px solid rgba(255,255,255,0.55);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.10);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero--packages .hero-btn:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.18);
+}
+
+/* PACKAGES */
+.packages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 4rem 0;
+}
+
+.package-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-8px);
+}
+
+.package-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #c89b3c;
+  margin-bottom: 1rem;
+}
+
+.package-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.package-card ul li {
+  margin-bottom: 0.6rem;
+  color: #555;
+}
+
+.package-card .btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: #c89b3c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.package-card .btn:hover {
+  background: #a87f2c;
+}
+
+/* FEATURED PACKAGE */
+.package-card.featured {
+  border: 2px solid #c89b3c;
+  transform: scale(1.05);
+}
+/* Background behind package cards (same tone as hero) */
+.packages-bg{
+  background: #3a3a3a; /* adjust if your hero uses a slightly different grey */
+  padding: 5rem 0;
+}
+
+/* Ensure cards stay readable */
+.package-card{
+  background: #ffffff;
+}
